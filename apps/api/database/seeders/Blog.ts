@@ -15,14 +15,14 @@ export default class extends BaseSeeder {
       {
         author_id: 1,
         title: 'test',
-        label: 'test',
+        label: 'Droit etranger',
         preface: 'test',
         content: 'moh',
       },
       {
         author_id: 1,
         title: 'test',
-        label: 'test',
+        label: 'Droit du travail',
         preface: 'test',
         content: 'moh',
       },

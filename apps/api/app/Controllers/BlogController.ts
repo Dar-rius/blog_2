@@ -10,6 +10,17 @@ export default class BlogController {
     ctx.response.ok(blogs)
   }
 
+  //method to get blog all from one domain
+  public async getDomain(ctx: HttpContextContract) {
+    const domain = ctx.request.param('domain')
+    try {
+      const blogs = await Blog.findBy('label', domain)
+      ctx.response.ok(blogs)
+    } catch {
+      ctx.response.badRequest({ message: "The blogs with this domain don't exist" })
+    }
+  }
+
   // method to get one blog
   public async getBlog(ctx: HttpContextContract) {
     const idBlog = ctx.request.param('id')

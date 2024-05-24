@@ -15,7 +15,7 @@ export const userFactory = Factory.define(User, ({ faker }) => {
 export const blogFactory = Factory.define(Blog, ({ faker }) => {
   return {
     title: faker.lorem.sentence(),
-    label: faker.lorem.sentence(),
+    label: 1,
     preface: faker.lorem.sentence(),
     content: faker.lorem.sentence(),
   }

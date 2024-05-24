@@ -3,6 +3,16 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class extends BaseSchema {
   protected tableName = 'user'
   protected tableName_1 = 'blog'
+  protected listDomain = [
+    'Droit du travail',
+    'Droit etranger',
+    'Droit du numerique',
+    'Propriete intellectuelle',
+    'Droit fiscal',
+    'Droit des societes',
+    'Droit civil',
+    'Veille juridique',
+  ]
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').unsigned().primary()
@@ -16,7 +26,11 @@ export default class extends BaseSchema {
       table.increments('id').unsigned().primary()
       table.integer('author_id').unsigned().references('user.id').onDelete('CASCADE')
       table.string('title', 20).notNullable()
-      table.string('label').notNullable()
+      table.enu('label', this.listDomain, {
+        useNative: true,
+        enumName: 'blog_domain',
+        existingType: false,
+      })
       table.string('preface', 200).notNullable()
       table.string('content').notNullable()
       table.timestamp('created_at').notNullable()

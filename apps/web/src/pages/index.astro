@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import {css} from '../../styled-system/css'
-import {center, box, flex} from '../../styled-system/patterns'
+import {center, box, grid, flex} from '../../styled-system/patterns'
 import ListBlog from '../components/ListBlog.astro'
 ---
 
@@ -25,17 +25,17 @@ import ListBlog from '../components/ListBlog.astro'
             I'm a software engineer and I'd like to <br/> share my latest discoveries with you.
             </p>
             <div class={
-                flex({direction: 'row', 
+                grid({columns: {base:'3'}, 
                 justify:'center'})}>
+
                 <a href="https://github.com/Dar-rius" target="_blank" 
                 class={css({color:'black',
-                    mr: '5%', 
                     ssmsOnly: {fontSize: '14.5'},
                     transition: 'all',
                     transitionTimingFunction: 'ease-out',
                     transitionDelay: '.2s'   
                 })}>
-                    Github
+                    Droit du travail
                 </a>
                 <a href="https://www.linkedin.com/in/mohamed-tine-515950214/" target="_blank" 
                 class={css({color:'black',
@@ -44,16 +44,65 @@ import ListBlog from '../components/ListBlog.astro'
                     transitionTimingFunction: 'ease-out',
                     transitionDelay: '.2s'
                 })}>
-                    Linkedin
+                    Droit etranger
                 </a>
                 <a href="https://twitter.com/Dar_rius_" target="_blank" 
                 class={css({color:'black',
-                    ml: '5%',
                     transition: 'all',
                     ssmsOnly: {fontSize: '14.5'},
                     transitionTimingFunction: 'ease-out',
                     transitionDelay: '.2s'})}>
-                    Twitter
+                    Droit penal
+                </a>
+                <a href="https://twitter.com/Dar_rius_" target="_blank" 
+                class={css({color:'black',
+                    transition: 'all',
+                    ssmsOnly: {fontSize: '14.5'},
+                    transitionTimingFunction: 'ease-out',
+                    transitionDelay: '.2s'})}>
+                    Droit du numerique
+                </a>
+                <a href="https://www.linkedin.com/in/mohamed-tine-515950214/" target="_blank" 
+                class={css({color:'black',
+                    transition: 'all',
+                    ssmsOnly: {fontSize: '14.5'},
+                    transitionTimingFunction: 'ease-out',
+                    transitionDelay: '.2s'
+                })}>
+                    Propriete intellecttuelle
+                </a>
+                <a href="https://twitter.com/Dar_rius_" target="_blank" 
+                class={css({color:'black',
+                    transition: 'all',
+                    ssmsOnly: {fontSize: '14.5'},
+                    transitionTimingFunction: 'ease-out',
+                    transitionDelay: '.2s'})}>
+                    Droit fiscal
+                </a>
+                <a href="https://twitter.com/Dar_rius_" target="_blank" 
+                class={css({color:'black',
+                    transition: 'all',
+                    ssmsOnly: {fontSize: '14.5'},
+                    transitionTimingFunction: 'ease-out',
+                    transitionDelay: '.2s'})}>
+                    Droit des societes
+                </a>
+                <a href="https://twitter.com/Dar_rius_" target="_blank" 
+                class={css({color:'black',
+                    transition: 'all',
+                    ssmsOnly: {fontSize: '14.5'},
+                    transitionTimingFunction: 'ease-out',
+                    transitionDelay: '.2s'})}>
+                    Droit civil
+                </a>
+                
+                <a href="https://twitter.com/Dar_rius_" target="_blank" 
+                class={css({color:'black',
+                    transition: 'all',
+                    ssmsOnly: {fontSize: '14.5'},
+                    transitionTimingFunction: 'ease-out',
+                    transitionDelay: '.2s'})}>
+                    Veille juridique
                 </a>
             </div>
         </center>

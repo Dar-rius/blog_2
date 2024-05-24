@@ -14,6 +14,13 @@ test.group('Blog test', () => {
     response.assertStatus(200)
   })
 
+  test('display domain', async ({ client }) => {
+    await userFactory.create()
+    await blogFactory.createMany(2)
+    const response = await client.get('/blog/domain/1')
+    response.assertStatus(200)
+  })
+
   test('get one blog', async ({ client }) => {
     const blog = await blogFactory.create()
     const response = await client.get('/blog/3')
@@ -30,7 +37,7 @@ test.group('Blog test', () => {
       .post('/create-blog')
       .fields({
         title: 'test',
-        label: 'Go test',
+        label: 2,
         preface: 'Je meurt',
       })
       .file('content', fileTest.contents, { filename: fileTest.name })

@@ -11,6 +11,7 @@ Route.group(() => {
 Route.group(() => {
   //Routes don't require auth
   Route.get('/all-blog', 'BlogController.index'),
+    Route.get('/blog/domain/:domain', 'BlogController.getDomain'),
     Route.get('/blog/:id', 'BlogController.getBlog'),
     //Routes require auth
     Route.post('/create-blog', 'BlogController.createBlog').middleware('auth:api'),
