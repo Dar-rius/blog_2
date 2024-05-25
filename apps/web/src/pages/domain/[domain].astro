@@ -15,12 +15,12 @@ const response  = await fetch(`http://127.0.0.1:3333/blog/domain/${domain}`)
 	<main>
         <OptionDomain />
         
-        <div class={grid({ columns:{base:'1', sm:'2'},
+        {response.length> 0 ? <div class={grid({ columns:{base:'1', sm:'2'},
                         color:'white',
                         justifyItems:'center',
                         mx: '1%',
                         })}>   
-            {response.map(item => (
+            { response.map(item => (
                 <a href={`/blog/${item.id}`} class={container({
                     width: {xl:'70%', sm:'90%', base:'85%' },
                     py: '5%',
@@ -80,7 +80,10 @@ const response  = await fetch(`http://127.0.0.1:3333/blog/domain/${domain}`)
                         {item.preface}
                     </p>
                 </a>
-            ))}
-        </div>
+            )) }
+        </div> : <p class={css({color: 'black',
+                                textAlign:'center',
+                                fontSize: '34',
+                                fontWeight:600})}> Aucun Article disponible </p>}
 	</main>
 </Layout>
