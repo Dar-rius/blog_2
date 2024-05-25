@@ -14,9 +14,9 @@ export default class BlogController {
   public async getDomain(ctx: HttpContextContract) {
     const domain = Number(ctx.request.param('domain'))
     try {
-      const blogs = await Blog.findByOrFail('label', domain)
-      const data = [blogs]
-      ctx.response.ok(data)
+      const blogs = await Blog.query().where('label', '=', domain)
+      console.log(blogs)
+      ctx.response.ok(blogs)
     } catch {
       ctx.response.badRequest({ message: "The blogs with this domain don't exist" })
     }
