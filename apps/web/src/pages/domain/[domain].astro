@@ -1,8 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro'
-import Footer from '../../components/Footer.astro'
-import {css} from '../../../styled-system/css'
 import  {flex, container, grid, wrap} from "../../../styled-system/patterns"
+import {css} from "../../../styled-system/css"
+import OptionDomain from '../../components/OptionDomain.astro'
 
 export const prerender = false 
 const {domain} = Astro.params
@@ -10,74 +10,77 @@ const {domain} = Astro.params
 const response  = await fetch(`http://127.0.0.1:3333/blog/domain/${domain}`)
                     .then((res) => res.json())
                     .catch((err) => console.error(err))
-
 ---
-<layout>
-    <div class={grid({ columns:{base:'1', sm:'2'},
-                    color:'white',
-                    justifyItems:'center',
-                    mx: '1%',
-                    })}>   
-        {response.map(item => (
-            <a href={`/blog/${item.id}`} class={container({
-                width: {xl:'70%', sm:'90%', base:'85%' },
-                py: '5%',
-                my: '7%',
-                bg: '#714BEE',
-                borderWidth: 1,
-                borderColor: '#131418',
-                borderRadius: 'md',
-                transition: 'all',
-                transitionTimingFunction: 'ease-out',
-                transitionDelay: '.2s',
-                '& p':{
+<Layout>
+	<main>
+        <OptionDomain />
+        
+        <div class={grid({ columns:{base:'1', sm:'2'},
+                        color:'white',
+                        justifyItems:'center',
+                        mx: '1%',
+                        })}>   
+            {response.map(item => (
+                <a href={`/blog/${item.id}`} class={container({
+                    width: {xl:'70%', sm:'90%', base:'85%' },
+                    py: '5%',
+                    my: '7%',
+                    bg: '#714BEE',
+                    borderWidth: 1,
+                    borderColor: '#131418',
+                    borderRadius: 'md',
                     transition: 'all',
                     transitionTimingFunction: 'ease-out',
                     transitionDelay: '.2s',
-                },
-                _hover:{
-                    borderWidth: 1.5,
-                    borderColor: '#72457B',
                     '& p':{
-                        color: '#EAE1E1'
+                        transition: 'all',
+                        transitionTimingFunction: 'ease-out',
+                        transitionDelay: '.2s',
                     },
-                }
-                })}>
-                <p class={css({
-                    mb: '5%',
-                    textAlign:'center',
-                    color: 'white',
-                    sms: {
-                        fontSize: '14' 
-                    },
-                    ssms: {
-                        fontSize: '10' 
-                    },
-                })}>{item.updated_at}</p>
-                <h2 class={css({fontSize:'26',
-                                color:'white',
-                                fontWeight:'600',
-                                mb: '5%',
-                                textAlign:'center',
-                                sms: {
-                                    fontSize: '22' 
-                                },
-                                ssms: {
-                                    fontSize: '18' 
-                                },
-                                })}>
-                                {item.title}
-                </h2>
-                <p class={css({color:'white',
-                                sms: {
-                                    fontSize: '14' 
-                                },
-                                ssms: {
-                                    fontSize: '12' 
-                                },})}>
-                    {item.preface}
-                </p>
-            </a>
-        ))}
-    </div>
-</layout>
+                    _hover:{
+                        borderWidth: 1.5,
+                        borderColor: '#72457B',
+                        '& p':{
+                            color: '#EAE1E1'
+                        },
+                    }
+                    })}>
+                    <p class={css({
+                        mb: '5%',
+                        textAlign:'center',
+                        color: 'white',
+                        sms: {
+                            fontSize: '14' 
+                        },
+                        ssms: {
+                            fontSize: '10' 
+                        },
+                    })}>{item.updated_at}</p>
+                    <h2 class={css({fontSize:'26',
+                                    color:'white',
+                                    fontWeight:'600',
+                                    mb: '5%',
+                                    textAlign:'center',
+                                    sms: {
+                                        fontSize: '22' 
+                                    },
+                                    ssms: {
+                                        fontSize: '18' 
+                                    },
+                                    })}>
+                                    {item.title}
+                    </h2>
+                    <p class={css({color:'white',
+                                    sms: {
+                                        fontSize: '14' 
+                                    },
+                                    ssms: {
+                                        fontSize: '12' 
+                                    },})}>
+                        {item.preface}
+                    </p>
+                </a>
+            ))}
+        </div>
+	</main>
+</Layout>

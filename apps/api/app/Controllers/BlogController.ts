@@ -16,7 +16,6 @@ export default class BlogController {
     try {
       const blogs = await Blog.findByOrFail('label', domain)
       const data = [blogs]
-      console.log(data)
       ctx.response.ok(data)
     } catch {
       ctx.response.badRequest({ message: "The blogs with this domain don't exist" })
