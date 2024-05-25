@@ -6,7 +6,7 @@ test.group('User tests for the success', () => {
 
   // test to create and log user
   test('create user and logged', async ({ client }) => {
-    const user = User.find(1)
+    const user = await User.findOrFail(1)
     const response = await client
       .post('/signup')
       .json({

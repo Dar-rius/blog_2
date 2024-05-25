@@ -29,7 +29,7 @@ test.group('Blog test', () => {
   })
 
   test('create blog', async ({ client }) => {
-    const user = User.find(1)
+    const user = await User.findOrFail(1)
     //const drive = Drive.fake()
     const fileTest = await file.generatePdf('1mb', 'test')
 
@@ -51,7 +51,7 @@ test.group('Blog test', () => {
   })
 
   test('update blog metadata', async ({ client }) => {
-    const user = User.find(1)
+    const user = await User.findOrFail(1)
 
     const response = await client
       .put('/edit-blog-data/1')
@@ -68,7 +68,7 @@ test.group('Blog test', () => {
   })
 
   test('update blog file', async ({ client }) => {
-    const user = User.find(1)
+    const user = await User.findOrFail(1)
     const fileTest = await file.generatePdf('1mb', 'test')
 
     const response = await client
@@ -82,7 +82,7 @@ test.group('Blog test', () => {
   })
 
   test('delete blog', async ({ client }) => {
-    const user = User.find(1)
+    const user = await User.findOrFail(1)
     const response = await client.delete('/delete-blog/1').guard('api').loginAs(user)
 
     response.assertStatus(200)

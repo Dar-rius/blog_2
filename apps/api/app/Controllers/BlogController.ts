@@ -42,6 +42,7 @@ export default class BlogController {
     try {
       await saveFile(fileMK)
       await Blog.create({
+        //@ts-ignore
         author_id: user.id,
         title: title,
         label: label,
@@ -74,6 +75,7 @@ export default class BlogController {
     try {
       const blog = await Blog.findOrFail(idBlog)
       await changeFile(fileMK, blog.content)
+      //@ts-ignore
       blog.content = fileMK?.clientName
       blog.save()
       ctx.response.ok({ message: 'Success' })
