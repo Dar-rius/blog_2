@@ -47,7 +47,25 @@ export default function NewComponent() {
       </div>
       <div className={styleContainer}>
         <p className={styleLabel}>Labels</p>
-        <input placeholder="Enter labels" type="text" name="label" required />
+        <select
+          name="label"
+          required
+          id="pet-select"
+          class={css({ color: "black", bg: "white" })}
+        >
+          <option value=""> Select the domain </option>
+          <option value="Droit du travail">Droit du travail</option>
+          <option value="Droit etranger">Droit etranger</option>
+          <option value="hamster">Hamster</option>
+          <option value="Droit du numerique">Droit du numerique</option>
+          <option value="Propriete intellectuelle">
+            Propriete intellectuelle
+          </option>
+          <option value="Droit fiscal">Droit fiscal</option>
+          <option value="Droit des societes">Droit des societes</option>
+          <option value="Droit civil">Droit civil</option>
+          <option value="Veille juridique">Veille juridique</option>
+        </select>
       </div>
       <div className={styleContainer}>
         <p className={styleLabel}>Preface</p>

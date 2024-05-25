@@ -21,9 +21,10 @@ const {id} = Astro.params
     <center>
     <h2 class={css({
             fontWeight: '500',
-            mt: '3%'
+            mt: '3%',
+            color:'white
             })}> 
-            Modify your blog
+            Edit your blog
         </h2>
         <EditFirst id={id} client:idle />
     </center>
