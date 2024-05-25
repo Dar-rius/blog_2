@@ -26,11 +26,7 @@ export default class extends BaseSchema {
       table.increments('id').unsigned().primary()
       table.integer('author_id').unsigned().references('user.id').onDelete('CASCADE')
       table.string('title', 20).notNullable()
-      table.enu('label', this.listDomain, {
-        useNative: true,
-        enumName: 'blog_domain',
-        existingType: false,
-      })
+      table.enu('label', this.listDomain).notNullable()
       table.string('preface', 200).notNullable()
       table.string('content').notNullable()
       table.timestamp('created_at').notNullable()

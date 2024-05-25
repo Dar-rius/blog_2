@@ -23,7 +23,7 @@ test.group('Blog test', () => {
 
   test('get one blog', async ({ client }) => {
     const blog = await blogFactory.create()
-    const response = await client.get('/blog/3')
+    const response = await client.get('/blog/1')
     response.assertStatus(200)
     response.assertBodyContains({ title: blog.title })
   })
@@ -57,7 +57,7 @@ test.group('Blog test', () => {
       .put('/edit-blog-data/1')
       .fields({
         title: 'hoo merde',
-        label: 'pass test',
+        label: 3,
         preface: 'Je meurt',
       })
       .guard('api')
