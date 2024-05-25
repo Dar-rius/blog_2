@@ -26,6 +26,20 @@ export default class extends BaseSeeder {
         preface: 'test',
         content: 'moh',
       },
+      {
+        author_id: 1,
+        title: 'test',
+        label: 'Droit etranger',
+        preface: 'test',
+        content: 'moh',
+      },
+      {
+        author_id: 1,
+        title: 'test',
+        label: 'Droit du travail',
+        preface: 'test',
+        content: 'moh',
+      },
     ])
   }
 }
