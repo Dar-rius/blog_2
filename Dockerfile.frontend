@@ -1,39 +1,28 @@
-ARG PORT=80
 
-FROM node:18.15-bullseye-slim as builder
-
-ENV PORT=${PORT}
+FROM node:18-alpine3.19 as builder
 ENV NODE_ENV=production
 
 WORKDIR /app
-
-COPY yarn.lock /app
 COPY /apps/web/package.json /app/package.json
+COPY yarn.lock /app/yarn.lock
 
-RUN yarn install --ignore-engines
-RUN yarn add -D @pandacss/dev --ignore-engines
+RUN yarn install 
+RUN yarn add -D @pandacss/dev
 RUN yarn panda init --postcss 
 
-COPY apps/web/tsconfig.json /app
-COPY apps/web /app/apps/web
-
-ENV NODE_ENV=production
+COPY apps/web/tsconfig.json /app/tsconfig.json
+COPY apps/web /app
 
 RUN yarn prepare
-RUN yarn build:web
-RUN rm -rf node_modules
+RUN yarn build
 
-RUN yarn workspaces focus myBlog/web --production
+FROM node:18-alpine3.19 as runner
 
-FROM node:18.15-alpine3.17 as runner
+WORKDIR /app
 
-ENV PORT=${PORT}
 ENV NODE_ENV=production
 
-EXPOSE ${PORT}
-
-COPY --from=builder /app/apps/web/dist /app
+COPY --from=builder /app/dist /app
 COPY --from=builder /app/node_modules /app/node_modules
-COPY --from=builder /app/apps/web/package.json /app/package.json
 
-CMD ["astro", "dev"]
+ENTRYPOINT ["/bin/sh", "-c", "node /app/server/entry.mjs"]
