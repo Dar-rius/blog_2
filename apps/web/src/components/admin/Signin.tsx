@@ -1,8 +1,8 @@
 import { css } from "../../../styled-system/css";
-import { center, flex } from "../../../styled-system/patterns";
+import { flex } from "../../../styled-system/patterns";
 import React, { useRef } from "react";
 import axios from "axios";
-import { url } from "../../utils";
+import { url, urlServer } from "../../utils";
 
 export default function SigninComponent() {
   // variable
@@ -14,7 +14,7 @@ export default function SigninComponent() {
     e.preventDefault();
     axios
       .post(
-        `http://localhost:3333/signin`,
+        `${urlServer}/signin`,
         {
           email: email.current,
           password: password.current,

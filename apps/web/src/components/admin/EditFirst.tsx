@@ -2,7 +2,7 @@ import { css } from "../../../styled-system/css";
 import { flex } from "../../../styled-system/patterns";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { url } from "../../utils";
+import { url, urlServer } from "../../utils";
 
 export default function EditFirst(id: { id: number }) {
   // variable
@@ -12,7 +12,7 @@ export default function EditFirst(id: { id: number }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3333/blog/${_id}`)
+      .get(`${urlServer}/blog/${_id}`)
       .then((res) => {
         setData(res.data);
       })
@@ -23,7 +23,7 @@ export default function EditFirst(id: { id: number }) {
     e.preventDefault();
     try {
       const token = sessionStorage.getItem("token");
-      await axios.put(`http://localhost:3333/edit-blog-data/${_id}`, data, {
+      await axios.put(`${urlServer}/edit-blog-data/${_id}`, data, {
         headers: { authorization: `Bearer ${token}` },
       });
       window.location = `${url}/admin/edit`;
@@ -37,10 +37,10 @@ export default function EditFirst(id: { id: number }) {
     e.preventDefault();
     try {
       const token = sessionStorage.getItem("token");
-      await axios.delete(`http://localhost:3333/delete-blog/${_id}`, {
+      await axios.delete(`${urlServer}/delete-blog/${_id}`, {
         headers: { authorization: `Bearer ${token}` },
       });
-      window.location = "http://localhost:4321/admin/edit";
+      window.location = `${url}/admin/edit`;
     } catch (err) {
       console.error(err);
     }
@@ -68,7 +68,6 @@ export default function EditFirst(id: { id: number }) {
           name="title"
           defaultValue={data.title}
           onChange={(e) => (data.title = e.target.value)}
-          required
         />
       </div>
       <div className={styleContainer}>
@@ -79,7 +78,6 @@ export default function EditFirst(id: { id: number }) {
           name="label;"
           defaultValue={data.label}
           onChange={(e) => (data.label = e.target.value)}
-          required
         />
       </div>
       <div className={styleContainer}>
@@ -90,7 +88,6 @@ export default function EditFirst(id: { id: number }) {
           name="preface"
           defaultValue={data.preface}
           onChange={(e) => (data.preface = e.target.value)}
-          required
         />
       </div>
       <p className={css({ color: "red.300" })}>{message}</p>

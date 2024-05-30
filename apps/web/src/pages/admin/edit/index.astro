@@ -2,8 +2,9 @@
 import {css} from '../../../../styled-system/css'
 import {center, flex} from '../../../../styled-system/patterns'
 import AdminLayout from '../../../layouts/AdminLayout.astro'
+import {urlServer} from "../../../utils.ts"
 
-const response = await fetch('http://localhost:3333/all-blog')
+const response = await fetch(`${urlServer}/all-blog`)
                     .then((res) => res.json())
                     .catch((err) => console.error(err))
 

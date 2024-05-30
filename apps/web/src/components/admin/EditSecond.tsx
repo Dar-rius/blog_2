@@ -2,7 +2,7 @@ import { css } from "../../../styled-system/css";
 import { flex } from "../../../styled-system/patterns";
 import React, { useState } from "react";
 import axios from "axios";
-import { url } from "../../utils";
+import { url, urlServer } from "../../utils";
 
 export default function EditSecond(id: { id: number }) {
   const _id = id.id;
@@ -14,7 +14,7 @@ export default function EditSecond(id: { id: number }) {
     form.set("content", form.get("content"));
     try {
       const token = sessionStorage.getItem("token");
-      await axios.putForm(`http://localhost:3333/edit-blog-file/${_id}`, form, {
+      await axios.putForm(`${urlServer}/edit-blog-file/${_id}`, form, {
         headers: { authorization: `Bearer ${token}` },
       });
       window.location = `${url}/admin/edit`;

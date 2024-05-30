@@ -1,8 +1,8 @@
 import { css } from "../../../styled-system/css";
-import { center, flex } from "../../../styled-system/patterns";
+import { flex } from "../../../styled-system/patterns";
 import React, { useRef } from "react";
 import axios from "axios";
-import { url } from "../../utils";
+import { url, urlServer } from "../../utils";
 
 export default function SignupComponent() {
   // variable
@@ -16,7 +16,7 @@ export default function SignupComponent() {
     const token = sessionStorage.getItem("token");
     await axios
       .post(
-        `http://127.0.0.1:3333/signup`,
+        `${urlServer}/signup`,
         {
           username: username.current,
           email: email.current,
@@ -25,7 +25,7 @@ export default function SignupComponent() {
         },
         {
           headers: { Authorization: `Bearer ${token}` },
-        }
+        },
       )
       .then((res) => {
         sessionStorage.setItem("token", res.data.token);

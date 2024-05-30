@@ -3,11 +3,12 @@ import Layout from '../../layouts/Layout.astro'
 import  {flex, container, grid, wrap} from "../../../styled-system/patterns"
 import {css} from "../../../styled-system/css"
 import OptionDomain from '../../components/OptionDomain.astro'
+import {urlServer} from "../../utils.ts"
 
 export const prerender = false 
 const {domain} = Astro.params
 
-const response  = await fetch(`http://localhost:3333/blog/domain/${domain}`)
+const response  = await fetch(`${urlServer}/blog/domain/${domain}`)
                     .then((res) => res.json())
                     .catch((err) => console.error(err))
 ---

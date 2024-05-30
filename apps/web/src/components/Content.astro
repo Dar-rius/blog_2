@@ -2,11 +2,12 @@
 import {css} from '../../styled-system/css'
 import axios from 'axios'
 import { marked } from 'marked';
+import {urlServer} from "../utils.ts"
 
 //props
 const {data} = Astro.props
 
-const response = await fetch(`http://localhost:3333${data}`)
+const response = await fetch(`${urlServer}${data}`)
             .then((res) => res.text())
             .catch((err) => console.error(err))
 
