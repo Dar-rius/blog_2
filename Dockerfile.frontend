@@ -1,28 +1,14 @@
-
-FROM node:18-alpine3.19 as builder
-ENV NODE_ENV=production
-
+FROM node:lts AS runtime
 WORKDIR /app
-COPY /apps/web/package.json /app/package.json
-COPY yarn.lock /app/yarn.lock
 
-RUN yarn install 
-RUN yarn add -D @pandacss/dev
-RUN yarn panda init --postcss 
-
-COPY apps/web/tsconfig.json /app/tsconfig.json
 COPY apps/web /app
 
+RUN yarn install
+RUN yarn add -D @pandacss/dev
 RUN yarn prepare
 RUN yarn build
 
-FROM node:18-alpine3.19 as runner
-
-WORKDIR /app
-
-ENV NODE_ENV=production
-
-COPY --from=builder /app/dist /app
-COPY --from=builder /app/node_modules /app/node_modules
-
-ENTRYPOINT ["/bin/sh", "-c", "node /app/server/entry.mjs"]
+ENV HOST=0.0.0.0
+ENV PORT=4321
+EXPOSE 4321
+CMD node ./dist/server/entry.mjs
