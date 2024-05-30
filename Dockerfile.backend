@@ -6,12 +6,13 @@ RUN node ace build
 
 FROM node:18-alpine as runner
 WORKDIR /app
+ARG DB_CONNECTION
 ENV PORT=3333
 ENV HOST=0.0.0.0
 ENV NODE_ENV=production
 ENV DRIVE_DISK=local
 ENV APP_KEY=w_D4PzbKXR5LYDXxXcOuzOadXCrAg-QV
-ENV DB_CONNECTION=mysql://root:CFXvZxtumlyLoaAZyuUbBriUwzIIJkvF@monorail.proxy.rlwy.net:11273/railway
+ENV DB_CONNECTION=DB_CONNECTION
 
 COPY --from=build /app/build /app
 COPY --from=build /app/node_modules /app/node_modules
