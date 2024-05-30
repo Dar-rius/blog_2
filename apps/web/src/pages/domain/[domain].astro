@@ -7,7 +7,7 @@ import OptionDomain from '../../components/OptionDomain.astro'
 export const prerender = false 
 const {domain} = Astro.params
 
-const response  = await fetch(`http://127.0.0.1:3333/blog/domain/${domain}`)
+const response  = await fetch(`http://localhost:3333/blog/domain/${domain}`)
                     .then((res) => res.json())
                     .catch((err) => console.error(err))
 ---

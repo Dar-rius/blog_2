@@ -14,12 +14,12 @@ export default function SigninComponent() {
     e.preventDefault();
     axios
       .post(
-        `http://127.0.0.1:3333/signin`,
+        `http://localhost:3333/signin`,
         {
           email: email.current,
           password: password.current,
         },
-        { withCredentials: true }
+        { withCredentials: true },
       )
       .then((res) => {
         sessionStorage.setItem("token", res.data.token);

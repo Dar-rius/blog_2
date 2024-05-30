@@ -2,7 +2,7 @@
 import  {flex, container, grid, wrap} from "../../styled-system/patterns"
 import {css} from "../../styled-system/css"
 
-const response  = await fetch('http://127.0.0.1:3333/all-blog')
+const response  = await fetch('http://localhost:3333/all-blog')
                     .then((res) => res.json())
                     .catch((err) => console.error(err))
 ---
