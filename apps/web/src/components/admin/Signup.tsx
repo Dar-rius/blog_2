@@ -63,6 +63,7 @@ export default function SignupComponent() {
         class={css({
           fontWeight: "500",
           mt: "3%",
+          color: "white",
         })}
       >
         Sign up

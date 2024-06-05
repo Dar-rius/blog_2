@@ -40,12 +40,7 @@ export default function EditSecond(id: { id: number }) {
     <form method="post" onSubmit={handleSubmit} enctype="multipart/form-data">
       <div className={styleContainer}>
         <p className={styleLabel}>Content</p>
-        <input
-          placeholder="Select your file"
-          type="file"
-          name="content"
-          required
-        />
+        <input placeholder="Select your file" type="file" name="content" />
       </div>
       <p className={css({ color: "red.300" })}>{message}</p>
       <button type="submit">Confirm</button>
