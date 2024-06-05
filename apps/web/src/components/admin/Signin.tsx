@@ -49,6 +49,7 @@ export default function SigninComponent() {
         className={css({
           fontWeight: "500",
           mt: "3%",
+          color: "white",
         })}
       >
         Sign in
