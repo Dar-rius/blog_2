@@ -28,7 +28,7 @@ export default function EditFirst(id: { id: number }) {
       });
       window.location = `${url}/admin/edit`;
     } catch (err) {
-      setMessage("A field is not entered correctly");
+      setMessage(err);
       console.error(err);
     }
   }

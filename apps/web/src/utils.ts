@@ -7,5 +7,5 @@ export const isLogged = (token: any): boolean => {
   }
 };
 
-export const url = "https://www.lereperejuridique.com/";
+export const url = "https://www.lereperejuridique.com";
 export const urlServer = "https://cozy-creativity-production.up.railway.app";
