@@ -1,7 +1,7 @@
 ---
 import  {flex, container, grid, wrap} from "../../styled-system/patterns"
 import {css} from "../../styled-system/css"
-import {urlServer} from "../utils.ts"
+import {urlServer, truncate} from "../utils.ts"
 
 const response  = await fetch(`${urlServer}/all-blog`)
                     .then((res) => res.json())
@@ -63,14 +63,15 @@ const response  = await fetch(`${urlServer}/all-blog`)
                             })}>
                             {item.title}
             </h2>
-            <p class={css({color:'white',
+            <p id="preface", class={css({color:'white',
+                            
                             sms: {
                                 fontSize: '14' 
                             },
                             ssms: {
                                 fontSize: '12' 
                             },})}>
-                {item.preface}
+            {truncate(item.preface, 27)} ...
             </p>
         </a>
     ))}

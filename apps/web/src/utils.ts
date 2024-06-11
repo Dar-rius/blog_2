@@ -7,5 +7,10 @@ export const isLogged = (token: any): boolean => {
   }
 };
 
+//truncate a string
+export const truncate = (str, no_words) => {
+  return str.split(" ").splice(0, no_words).join(" ");
+};
+
 export const url = "https://www.lereperejuridique.com";
 export const urlServer = "https://cozy-creativity-production.up.railway.app";
